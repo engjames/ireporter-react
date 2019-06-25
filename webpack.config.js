@@ -4,12 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.join(__dirname, '/dist'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'index_bundle.js'
   },
   devServer: {
     contentBase: "./build",
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -19,11 +20,11 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader']
       },
       {
-        test: /\.less$/,
+        test: /\.s?css/,
         use: [
           'style-loader',
           'css-loader',
-          'less-loader',
+          'sass-loader',
         ],
       },
     ]
