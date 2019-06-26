@@ -1,19 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./style/main.less";
+import Router from '../src/redux/Router';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 class Welcome extends React.Component {
-    render () {
-        return (
-    <>
-      <h1 className="header">IReporter</h1>
-      <p>This app. enables any citizen to bring any form of corruption
-          to the notice of appropriate authorities and the general public.
-      </p>
-      <p>Visit ireporter at <a href="https://ireporterui.herokuapp.com/">IReporter</a></p>
-    </>
-        );
-    }
+  render() {
+    return (
+      <Router />
+    );
+  }
 }
 
-ReactDOM.render(<Welcome />, document.getElementById("root"));
+ReactDOM.render(<Provider store={store}><Welcome /></Provider>, document.getElementById("root"));
